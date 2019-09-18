@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import { Model, Sequelize } from 'sequelize';
-import { async } from 'rxjs/internal/scheduler/async';
 
 class User extends Model {
   static init(sequelize) {
@@ -24,6 +23,10 @@ class User extends Model {
     });
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
   }
 
   checkPassword(password) {
