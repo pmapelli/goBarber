@@ -58,6 +58,12 @@ class AppointementController {
       });
     }
 
+    if (provider_id === req.userId) {
+      return res.status(401).json({
+        error: `User and Provider cannot be the same`,
+      });
+    }
+
     const hourStart = startOfHour(parseISO(date));
 
     // Check for past date
