@@ -8,7 +8,6 @@ import {
   isAfter,
 } from 'date-fns';
 import { Op } from 'sequelize';
-import { isatty } from 'tty';
 import Appointment from '../models/Appointement';
 
 class AvailableController {
@@ -26,7 +25,7 @@ class AvailableController {
         provider_id: req.params.providerId,
         canceled_at: null,
         date: {
-          [Op.between]: [startOfDay(searchDate), endOfDay(searchDate)],
+          [Op.between]: [startOofDay(searchDate), endOfDay(searchDate)],
         },
       },
     });
