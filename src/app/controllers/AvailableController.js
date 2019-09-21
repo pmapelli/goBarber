@@ -25,7 +25,7 @@ class AvailableController {
         provider_id: req.params.providerId,
         canceled_at: null,
         date: {
-          [Op.between]: [startOofDay(searchDate), endOfDay(searchDate)],
+          [Op.between]: [startOfDay(searchDate), endOfDay(searchDate)],
         },
       },
     });
